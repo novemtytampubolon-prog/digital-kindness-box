@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f9e9f1">
+<title>Digital Kindness Box — A Little Message, A Big Smile</title>
+<style>
+:root{--pink:#f7dce8;--pink2:#fff2f7;--lav:#e8e2fa;--lav2:#f5f1ff;--cream:#fffaf0;--ink:#55485d;--muted:#817487;--green:#e1f0e3;--line:#eadde8;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#fff7f7,#f7f3ff 55%,#fffaf0);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;color:var(--ink);line-height:1.5}
+header{padding:18px 5vw;display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:1100px;margin:auto}.brand{font-weight:800;letter-spacing:.2px}.brand span{display:inline-grid;place-items:center;background:#fff;border-radius:14px;width:38px;height:38px;margin-right:8px;box-shadow:0 4px 15px #bca6cb22}
+.pill{font-size:.8rem;background:#fff;border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:var(--muted)}
+main{max-width:1100px;margin:auto;padding:12px 5vw 54px}.hero{border:1px solid #fff;background:linear-gradient(125deg,#f9e1ec,#eee8ff 65%,#fff5de);border-radius:30px;padding:clamp(24px,5vw,54px);display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:center;box-shadow:0 18px 45px #8f73901a;overflow:hidden}
+.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:.75rem;font-weight:800;color:#9475a4}.hero h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.08;margin:12px 0}.hero p{max-width:540px;color:#6d6076}.hero-art{font-size:clamp(5rem,14vw,9rem);text-align:center;filter:drop-shadow(0 12px 12px #987a9a22)}.btn{border:0;border-radius:14px;padding:12px 17px;font-weight:750;font-size:.95rem;cursor:pointer;transition:transform .15s,box-shadow .15s}.btn:hover{transform:translateY(-2px);box-shadow:0 7px 15px #8f739022}.primary{background:#9d82bc;color:white}.secondary{background:#fff;color:#705b80;border:1px solid var(--line)}.btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.section-title{margin:34px 0 15px}.section-title h2{font-size:1.45rem;margin:0}.section-title p{margin:5px 0 0;color:var(--muted);font-size:.94rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:#ffffffd9;border:1px solid #fff;border-radius:22px;padding:22px;box-shadow:0 10px 28px #8f739012}.card h3{margin:8px 0 6px;font-size:1.1rem}.card p{color:var(--muted);margin:0 0 15px}.emoji{font-size:1.8rem}.message-box{background:var(--pink2);border:1px dashed #e5bfd4;border-radius:18px;padding:20px;margin:14px 0;color:#72566d;font-size:1.12rem;min-height:95px;display:flex;align-items:center}
+.challenge{background:linear-gradient(130deg,#edf8ed,#f5f0ff);border-radius:18px;padding:20px;margin-top:10px}.challenge strong{display:block;margin-bottom:5px}.challenge .small{font-size:.9rem;color:var(--muted)}
+form{display:grid;gap:12px}label{font-size:.9rem;font-weight:700}input,select,textarea{font:inherit;color:var(--ink);width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;outline-color:#b8a2d2}textarea{resize:vertical;min-height:95px}.note{font-size:.82rem;color:var(--muted);background:#fff8e9;padding:12px;border-radius:12px}.affirmation{background:var(--lav2);border-radius:16px;padding:16px;font-weight:700;margin:10px 0}.footer{text-align:center;color:var(--muted);font-size:.85rem;margin:30px 0 0}.toast{margin-top:10px;font-size:.9rem;color:#507451;min-height:1.4em}
+@media(max-width:700px){header{padding:14px 5vw}.hero{grid-template-columns:1fr}.hero-art{grid-row:1;font-size:5rem}.hero{gap:0}.grid{grid-template-columns:1fr}.pill{display:none}.card{padding:19px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><span>💌</span> Digital Kindness Box</div><div class="pill">A Little Message, A Big Smile ✨</div></header>
+<main>
+<section class="hero">
+<div><div class="eyebrow">Kotak kecil, kebaikan besar</div><h1>Satu pesan baik bisa membuat hari lebih cerah 🌷</h1><p>Tempat untuk menemukan semangat, berbagi kata baik, dan melakukan kebaikan kecil bersama.</p><div class="btn-row"><button class="btn primary" onclick="newMessage()">💌 Buka Pesan Hari Ini</button><button class="btn secondary" onclick="document.getElementById('send').scrollIntoView({behavior:'smooth'})">✍️ Kirim Kebaikan</button></div></div>
+<div class="hero-art" aria-hidden="true">🌸🫙</div>
+</section>
+<section class="section-title"><h2>💌 Pesan kebaikan untukmu</h2><p>Kamu bisa membaca pesan ini kapan pun kamu membutuhkannya.</p></section>
+<div class="card"><div class="message-box" id="message" aria-live="polite">“Kamu berharga, dan kehadiranmu berarti. Semoga hari ini ada hal kecil yang membuatmu tersenyum.”</div><button class="btn secondary" onclick="newMessage()">Baca pesan lainnya ↗</button></div>
+<section class="section-title"><h2>🌈 Pilih ruang kebaikanmu</h2><p>Semua kegiatan boleh dilakukan sesuai kenyamananmu.</p></section>
+<div class="grid">
+<div class="card"><div class="emoji">🌷</div><h3>Pesan untuk Diriku</h3><p>Kalimat lembut untuk mengingatkan diri bahwa kamu layak dihargai.</p><div id="affirmation" class="affirmation">Aku boleh belajar pelan-pelan. Aku tidak harus sempurna untuk menjadi berharga.</div><button class="btn secondary" onclick="newAffirmation()">Afirmasi lainnya</button></div>
+<div class="card"><div class="emoji">⭐</div><h3>Tantangan Kebaikan</h3><p>Satu tindakan kecil yang bisa membuat lingkungan terasa lebih hangat.</p><div class="challenge"><strong id="challenge">Ucapkan terima kasih kepada seseorang hari ini.</strong><div class="small">Tidak perlu hadiah atau biaya—kebaikan kecil sudah berarti.</div></div><div class="btn-row"><button class="btn secondary" onclick="newChallenge()">Tantangan lainnya</button></div></div>
+</div>
+<section class="section-title" id="send"><h2>✍️ Kirim pesan kebaikan</h2><p>Tuliskan kata yang aman, sopan, dan bisa membuat orang lain merasa dihargai.</p></section>
+<div class="card"><form id="kindnessForm">
+<div><label for="category">Pesan ini untuk…</label><select id="category"><option>Semua orang</option><option>Teman</option><option>Pendamping</option><option>Diriku sendiri</option></select></div>
+<div><label for="kindMessage">Pesan kebaikanmu</label><textarea id="kindMessage" maxlength="240" required placeholder="Contoh: Terima kasih sudah mau bermain dan berbagi denganku."></textarea></div>
+<div class="note">🔒 Demi keamanan, jangan tulis nama lengkap, nomor telepon, alamat, rahasia pribadi, atau cerita sensitif. Pesan perlu diperiksa pendamping sebelum dipajang.</div>
+<button class="btn primary" type="submit">Simpan pesan di perangkat ini 💗</button>
+<div class="toast" id="status" aria-live="polite"></div>
+</form>
+<div id="savedArea" hidden><h3>Pesan tersimpan di perangkat ini</h3><p id="savedList"></p></div></div>
+<div class="footer">Dibuat dengan 💗 untuk menebarkan kebaikan.<br>Website contoh ini belum mengirim pesan ke perangkat lain. Pendamping perlu memeriksa pesan sebelum dibagikan.</div>
+</main>
+<script>
+const messages=[
+"Kamu berharga, dan kehadiranmu berarti. Semoga hari ini ada hal kecil yang membuatmu tersenyum.",
+"Tidak apa-apa jika kamu masih belajar. Setiap langkah kecil tetap sebuah kemajuan.",
+"Kebaikanmu mungkin terlihat sederhana, tetapi bisa berarti besar bagi orang lain.",
+"Kamu boleh beristirahat, meminta bantuan, dan mencoba lagi saat sudah siap.",
+"Terima kasih sudah menjadi dirimu sendiri. Dunia membutuhkan lebih banyak kebaikan.",
+"Hari yang sulit tidak menentukan seluruh ceritamu. Masih ada kesempatan untuk hal-hal baik."
+];
+const affirmations=[
+"Aku boleh belajar pelan-pelan. Aku tidak harus sempurna untuk menjadi berharga.",
+"Perasaanku penting, dan aku boleh menceritakannya kepada orang dewasa yang kupercaya.",
+"Aku punya kemampuan untuk tumbuh dan mencoba hal baru.",
+"Aku pantas diperlakukan dengan baik, sama seperti orang lain.",
+"Kesalahan adalah bagian dari belajar. Aku boleh mencoba lagi.",
+"Aku boleh bangga pada hal kecil yang sudah kulakukan hari ini."
+];
+const challenges=[
+"Ucapkan terima kasih kepada seseorang hari ini.",
+"Bantu merapikan satu benda yang digunakan bersama.",
+"Tanyakan kepada teman apakah ia ingin ditemani bermain.",
+"Berikan pujian yang tulus tentang kebaikan seseorang.",
+"Luangkan waktu untuk menggambar atau menulis sesuatu yang membuatmu senang.",
+"Rapikan buku atau alat tulis bersama-sama."
+];
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function newMessage(){document.getElementById('message').textContent='“'+pick(messages)+'”'}
+function newAffirmation(){document.getElementById('affirmation').textContent=pick(affirmations)}
+function newChallenge(){document.getElementById('challenge').textContent=pick(challenges)}
+document.getElementById('kindnessForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const msg=document.getElementById('kindMessage').value.trim();
+ if(!msg)return;
+ let saved=[];try{saved=JSON.parse(localStorage.getItem('kindnessDrafts')||'[]')}catch(e){}
+ saved.push({category:document.getElementById('category').value,message:msg});
+ try{localStorage.setItem('kindnessDrafts',JSON.stringify(saved));document.getElementById('status').textContent='Pesan tersimpan di browser/perangkat ini. Pesan belum terkirim ke orang lain.';document.getElementById('savedArea').hidden=false;document.getElementById('savedList').textContent=saved.length+' pesan tersimpan sebagai draf di perangkat ini.';this.reset();}
+ catch(e){document.getElementById('status').textContent='Browser tidak dapat menyimpan pesan. Silakan salin pesan sebelum menutup halaman.'}
+});
+</script>
+</body></html>
